@@ -1,10 +1,5 @@
-
-import HomePage from '../pages/home.jsx';
-import AboutPage from '../pages/about.jsx';
-import FormPage from '../pages/form.jsx';
-import CatalogPage from '../pages/catalog.jsx';
+import PostsPage from '../pages/posts.jsx';
 import ProductPage from '../pages/product.jsx';
-import SettingsPage from '../pages/settings.jsx';
 
 import DynamicRoutePage from '../pages/dynamic-route.jsx';
 import RequestAndLoad from '../pages/request-and-load.jsx';
@@ -13,27 +8,19 @@ import NotFoundPage from '../pages/404.jsx';
 var routes = [
   {
     path: '/',
-    component: HomePage,
+    component: PostsPage,
   },
   {
-    path: '/about/',
-    component: AboutPage,
+    path: '/reviews/',
+    component: PostsPage,
   },
   {
-    path: '/form/',
-    component: FormPage,
+    path: '/news/',
+    component: PostsPage,
   },
   {
-    path: '/catalog/',
-    component: CatalogPage,
-  },
-  {
-    path: '/product/:id/',
+    path: '/post/:id/',
     component: ProductPage,
-  },
-  {
-    path: '/settings/',
-    component: SettingsPage,
   },
 
   {
@@ -71,7 +58,7 @@ var routes = [
               title: 'Framework7 Forum',
               url: 'http://forum.framework7.io',
             },
-          ]
+          ],
         };
         // Hide Preloader
         app.preloader.hide();
@@ -84,7 +71,7 @@ var routes = [
           {
             context: {
               user: user,
-            }
+            },
           }
         );
       }, 1000);

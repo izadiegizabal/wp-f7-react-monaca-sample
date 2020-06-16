@@ -1,34 +1,20 @@
 import React from 'react';
-import { Device }  from 'framework7/framework7-lite.esm.bundle.js';
-import {
-  App,
-  Panel,
-  Views,
-  View,
-  Popup,
-  Page,
-  Navbar,
-  Toolbar,
-  NavRight,
-  Link,
-  Block,
-  BlockTitle,
-  LoginScreen,
-  LoginScreenTitle,
-  List,
-  ListItem,
-  ListInput,
-  ListButton,
-  BlockFooter
-} from 'framework7-react';
+import { Device } from 'framework7/framework7-lite.esm.bundle.js';
+import { App, Views, View, Toolbar, Link } from 'framework7-react';
 import cordovaApp from '../js/cordova-app';
 import routes from '../js/routes';
+
+const API =
+  'https://public-api.wordpress.com/wp/v2/sites/monacasampleapp.wordpress.com/';
+const ALL_POSTS = 'posts';
 
 export default class extends React.Component {
   constructor() {
     super();
 
     this.state = {
+      posts: [],
+
       // Framework7 Parameters
       f7params: {
         id: 'io.framework7.myapp', // App bundle ID
@@ -38,25 +24,27 @@ export default class extends React.Component {
         // App root data
         data: function () {
           return {
-
             // Demo products for Catalog section
             products: [
               {
                 id: '1',
                 title: 'Apple iPhone 8',
-                description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi tempora similique reiciendis, error nesciunt vero, blanditiis pariatur dolor, minima sed sapiente rerum, dolorem corrupti hic modi praesentium unde saepe perspiciatis.'
+                description:
+                  'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi tempora similique reiciendis, error nesciunt vero, blanditiis pariatur dolor, minima sed sapiente rerum, dolorem corrupti hic modi praesentium unde saepe perspiciatis.',
               },
               {
                 id: '2',
                 title: 'Apple iPhone 8 Plus',
-                description: 'Velit odit autem modi saepe ratione totam minus, aperiam, labore quia provident temporibus quasi est ut aliquid blanditiis beatae suscipit odio vel! Nostrum porro sunt sint eveniet maiores, dolorem itaque!'
+                description:
+                  'Velit odit autem modi saepe ratione totam minus, aperiam, labore quia provident temporibus quasi est ut aliquid blanditiis beatae suscipit odio vel! Nostrum porro sunt sint eveniet maiores, dolorem itaque!',
               },
               {
                 id: '3',
                 title: 'Apple iPhone X',
-                description: 'Expedita sequi perferendis quod illum pariatur aliquam, alias laboriosam! Vero blanditiis placeat, mollitia necessitatibus reprehenderit. Labore dolores amet quos, accusamus earum asperiores officiis assumenda optio architecto quia neque, quae eum.'
+                description:
+                  'Expedita sequi perferendis quod illum pariatur aliquam, alias laboriosam! Vero blanditiis placeat, mollitia necessitatibus reprehenderit. Labore dolores amet quos, accusamus earum asperiores officiis assumenda optio architecto quia neque, quae eum.',
               },
-            ]
+            ],
           };
         },
 
@@ -64,9 +52,11 @@ export default class extends React.Component {
         routes: routes,
 
         // Register service worker
-        serviceWorker: Device.cordova ? {} : {
-          path: '/service-worker.js',
-        },
+        serviceWorker: Device.cordova
+          ? {}
+          : {
+              path: '/service-worker.js',
+            },
         // Input settings
         input: {
           scrollIntoViewOnFocus: Device.cordova && !Device.electron,
@@ -78,109 +68,50 @@ export default class extends React.Component {
           androidOverlaysWebView: false,
         },
       },
-      // Login screen demo data
-      username: '',
-      password: '',
-    }
+    };
   }
   render() {
     return (
-      <App params={ this.state.f7params } >
-
-        {/* Left panel with cover effect*/}
-        <Panel left cover themeDark>
-          <View>
-            <Page>
-              <Navbar title="Left Panel"/>
-              <Block>Left panel content goes here</Block>
-            </Page>
-          </View>
-        </Panel>
-
-
-        {/* Right panel with reveal effect*/}
-        <Panel right reveal themeDark>
-          <View>
-            <Page>
-              <Navbar title="Right Panel"/>
-              <Block>Right panel content goes here</Block>
-            </Page>
-          </View>
-        </Panel>
-
-
+      <App params={this.state.f7params}>
         {/* Views/Tabs container */}
         <Views tabs className="safe-areas">
           {/* Tabbar for switching views-tabs */}
           <Toolbar tabbar labels bottom>
-            <Link tabLink="#view-home" tabLinkActive iconIos="f7:house_fill" iconAurora="f7:house_fill" iconMd="material:home" text="Home" />
-            <Link tabLink="#view-catalog" iconIos="f7:square_list_fill" iconAurora="f7:square_list_fill" iconMd="material:view_list" text="Catalog" />
-            <Link tabLink="#view-settings" iconIos="f7:gear" iconAurora="f7:gear" iconMd="material:settings" text="Settings" />
+            <Link
+              tabLink="#view-all"
+              tabLinkActive
+              iconIos="f7:tray_2_fill"
+              iconAurora="f7:tray_2_fill"
+              iconMd="material:inbox"
+              text="All"
+            />
+            <Link
+              tabLink="#view-news"
+              iconIos="f7:compass_fill"
+              iconAurora="f7:compass_fill"
+              iconMd="material:explore"
+              text="News"
+            />
+            <Link
+              tabLink="#view-reviews"
+              iconIos="f7:bookmark_fill"
+              iconAurora="f7:bookmark_fill"
+              iconMd="material:bookmark"
+              text="Reviews"
+            />
           </Toolbar>
 
           {/* Your main view/tab, should have "view-main" class. It also has "tabActive" prop */}
-          <View id="view-home" main tab tabActive url="/" />
+          <View id="view-all" main tab tabActive url="/" />
 
           {/* Catalog View */}
-          <View id="view-catalog" name="catalog" tab url="/catalog/" />
+          <View id="view-news" name="news" tab url="/news/" />
 
           {/* Settings View */}
-          <View id="view-settings" name="settings" tab url="/settings/" />
-
+          <View id="view-reviews" name="reviews" tab url="/reviews/" />
         </Views>
-
-        {/* Popup */}
-        <Popup id="my-popup">
-          <View>
-            <Page>
-              <Navbar title="Popup">
-                <NavRight>
-                  <Link popupClose>Close</Link>
-                </NavRight>
-              </Navbar>
-              <Block>
-                <p>Popup content goes here.</p>
-              </Block>
-            </Page>
-          </View>
-        </Popup>
-
-        <LoginScreen id="my-login-screen">
-          <View>
-            <Page loginScreen>
-              <LoginScreenTitle>Login</LoginScreenTitle>
-              <List form>
-                <ListInput
-                  type="text"
-                  name="username"
-                  placeholder="Your username"
-                  value={this.state.username}
-                  onInput={(e) => this.setState({username: e.target.value})}
-                ></ListInput>
-                <ListInput
-                  type="password"
-                  name="password"
-                  placeholder="Your password"
-                  value={this.state.password}
-                  onInput={(e) => this.setState({password: e.target.value})}
-                ></ListInput>
-              </List>
-              <List>
-                <ListButton title="Sign In" onClick={() => this.alertLoginData()} />
-                <BlockFooter>
-                  Some text about login information.<br />Click "Sign In" to close Login Screen
-                </BlockFooter>
-              </List>
-            </Page>
-          </View>
-        </LoginScreen>
       </App>
-    )
-  }
-  alertLoginData() {
-    this.$f7.dialog.alert('Username: ' + this.state.username + '<br>Password: ' + this.state.password, () => {
-      this.$f7.loginScreen.close();
-    });
+    );
   }
   componentDidMount() {
     this.$f7ready((f7) => {
@@ -188,6 +119,11 @@ export default class extends React.Component {
       if (Device.cordova) {
         cordovaApp.init(f7);
       }
+
+      // Fetch data
+      fetch(API + ALL_POSTS)
+        .then((response) => response.json())
+        .then((data) => this.setState({ posts: data.posts }));
       // Call F7 APIs here
     });
   }

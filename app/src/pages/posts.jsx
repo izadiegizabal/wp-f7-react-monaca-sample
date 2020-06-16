@@ -7,18 +7,18 @@ export default class extends React.Component {
 
     this.state = {
       products: this.$f7.data.products,
-    }
+    };
   }
   render() {
     return (
-      <Page name="catalog">
-        <Navbar title="Catalog" />
+      <Page name="posts">
+        <Navbar title="WP App" />
         <List>
           {this.state.products.map((product) => (
             <ListItem
               key={product.id}
               title={product.title}
-              link={`/product/${product.id}/`}
+              link={`/post/${product.id}/`}
             />
           ))}
         </List>
