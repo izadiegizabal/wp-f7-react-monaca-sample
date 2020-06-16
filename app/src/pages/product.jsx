@@ -15,16 +15,14 @@ export default class extends React.Component {
     this.state = {
       product: currentProduct,
     };
-
   }
   render() {
+    console.log(this.state.product);
     return (
       <Page name="product">
         <Navbar title={this.state.product.title} backLink="Back" />
         <BlockTitle>About {this.state.product.title}</BlockTitle>
-        <Block strong>
-          {this.state.product.description}
-        </Block>
+        <Block strong>{this.state.product.description}</Block>
       </Page>
     );
   }

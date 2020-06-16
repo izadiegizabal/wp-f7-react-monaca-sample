@@ -4,17 +4,11 @@ import { App, Views, View, Toolbar, Link } from 'framework7-react';
 import cordovaApp from '../js/cordova-app';
 import routes from '../js/routes';
 
-const API =
-  'https://public-api.wordpress.com/wp/v2/sites/monacasampleapp.wordpress.com/';
-const ALL_POSTS = 'posts';
-
 export default class extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      posts: [],
-
       // Framework7 Parameters
       f7params: {
         id: 'io.framework7.myapp', // App bundle ID
@@ -119,11 +113,6 @@ export default class extends React.Component {
       if (Device.cordova) {
         cordovaApp.init(f7);
       }
-
-      // Fetch data
-      fetch(API + ALL_POSTS)
-        .then((response) => response.json())
-        .then((data) => this.setState({ posts: data.posts }));
       // Call F7 APIs here
     });
   }
