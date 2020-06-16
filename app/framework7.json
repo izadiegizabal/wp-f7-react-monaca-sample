@@ -1,0 +1,43 @@
+{
+  "cwd": "/Users/izadi/Desktop/wp-f7-react-monaca-sample/app",
+  "type": [
+    "cordova",
+    "web",
+    "pwa"
+  ],
+  "name": "WP App",
+  "framework": "react",
+  "template": "tabs",
+  "bundler": "webpack",
+  "cssPreProcessor": "scss",
+  "theming": {
+    "customColor": false,
+    "color": "#007aff",
+    "darkTheme": false,
+    "iconFonts": true,
+    "fillBars": false
+  },
+  "customBuild": false,
+  "webpack": {
+    "developmentSourceMap": true,
+    "productionSourceMap": true,
+    "hashAssets": false,
+    "preserveAssetsPaths": false,
+    "inlineAssets": true
+  },
+  "pkg": "io.framework7.myapp",
+  "cordova": {
+    "folder": "cordova",
+    "platforms": [
+      "ios",
+      "android",
+      "osx",
+      "electron"
+    ],
+    "plugins": [
+      "cordova-plugin-statusbar",
+      "cordova-plugin-keyboard",
+      "cordova-plugin-splashscreen"
+    ]
+  }
+}
