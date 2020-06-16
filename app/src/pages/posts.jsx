@@ -1,4 +1,5 @@
 import React from 'react';
+import renderHTML from 'react-render-html';
 import { Page, Navbar, List, ListItem } from 'framework7-react';
 
 const API =
@@ -26,7 +27,7 @@ export default class extends React.Component {
           {posts.map((post) => (
             <ListItem
               key={post.id}
-              title={post.title.rendered}
+              title={renderHTML(post.title.rendered)}
               link={`/post/${post.id}/`}
             />
           ))}
