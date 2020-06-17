@@ -4,6 +4,9 @@ import { App, Views, View, Toolbar, Link } from 'framework7-react';
 import cordovaApp from '../js/cordova-app';
 import routes from '../js/routes';
 
+// Probably store it in a better place
+const OS_APP_ID = '30753b80-fc81-4dc2-9a73-61eecdcec542';
+
 export default class extends React.Component {
   constructor() {
     super();
@@ -113,7 +116,40 @@ export default class extends React.Component {
       if (Device.cordova) {
         cordovaApp.init(f7);
       }
+      // Push notifications
+      document.addEventListener('deviceready', this.initialiseOneSignal);
       // Call F7 APIs here
     });
+  }
+
+  initialiseOneSignal() {
+    //Remove this method to stop OneSignal Debugging
+    window.plugins.OneSignal.setLogLevel({
+      logLevel: 6,
+      visualLevel: 0,
+    });
+
+    var notificationOpenedCallback = function (jsonData) {
+      console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+    };
+    // Set your iOS Settings
+    var iosSettings = {};
+    iosSettings['kOSSettingsKeyAutoPrompt'] = false;
+    iosSettings['kOSSettingsKeyInAppLaunchURL'] = false;
+
+    window.plugins.OneSignal.startInit(OS_APP_ID)
+      .handleNotificationOpened(notificationOpenedCallback)
+      .iOSSettings(iosSettings)
+      .inFocusDisplaying(
+        window.plugins.OneSignal.OSInFocusDisplayOption.Notification
+      )
+      .endInit();
+
+    // The promptForPushNotificationsWithUserResponse function will show the iOS push notification prompt. We recommend removing the following code and instead using an In-App Message to prompt for notification permission (See step 6)
+    window.plugins.OneSignal.promptForPushNotificationsWithUserResponse(
+      function (accepted) {
+        console.log('User accepted notifications: ' + accepted);
+      }
+    );
   }
 }
