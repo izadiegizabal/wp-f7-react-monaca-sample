@@ -29,6 +29,8 @@ export default class extends React.Component {
 
     return (
       <Page
+        ptr
+        onPtrRefresh={this.loadPosts.bind(this)}
         name="posts"
         infinite
         infiniteDistance={50}
@@ -49,7 +51,7 @@ export default class extends React.Component {
     );
   }
 
-  loadPosts() {
+  loadPosts(done) {
     const { currentPage } = this.state;
 
     // Fetch data
@@ -66,6 +68,7 @@ export default class extends React.Component {
             currentPage: currentPage,
           })
         );
+        if (typeof done === 'function') done();
       });
   }
   getCategoryId() {
