@@ -4,7 +4,7 @@ import { Page, Navbar, List, ListItem } from 'framework7-react';
 import './css/posts.css';
 
 // Extract to configuration file
-const API = 'http://monacasamplewp.c1.biz/wp-json/wp/v2/';
+const API = 'http://www.monacasamplewp.c1.biz/wp-json/wp/v2/';
 const ALL_POSTS = 'posts?';
 const PER_PAGE = 'per_page=';
 const BASE_API = API + ALL_POSTS + '&' + PER_PAGE + '20' + '&';

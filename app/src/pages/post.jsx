@@ -4,7 +4,7 @@ import renderHTML from 'react-render-html';
 import './css/post.css';
 
 // Extract to configuration file
-const API = 'http://monacasamplewp.c1.biz/wp-json/wp/v2/posts/';
+const API = 'http://www.monacasamplewp.c1.biz/wp-json/wp/v2/posts/';
 
 export default class extends React.Component {
   constructor(props) {

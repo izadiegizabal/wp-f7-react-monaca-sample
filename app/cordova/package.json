@@ -17,6 +17,7 @@
     "cordova-electron": "^1.1.1",
     "cordova-ios": "^6.0.0",
     "cordova-osx": "^5.0.0",
+    "cordova-plugin-cleartext": "^1.0.0",
     "cordova-plugin-keyboard": "^1.2.0",
     "cordova-plugin-splashscreen": "^5.0.4",
     "cordova-plugin-statusbar": "^2.4.3",
@@ -28,7 +29,8 @@
       "cordova-plugin-keyboard": {},
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-whitelist": {},
-      "onesignal-cordova-plugin": {}
+      "onesignal-cordova-plugin": {},
+      "cordova-plugin-cleartext": {}
     },
     "platforms": [
       "ios",
