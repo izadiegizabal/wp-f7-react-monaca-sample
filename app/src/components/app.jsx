@@ -3,9 +3,8 @@ import { Device } from 'framework7/framework7-lite.esm.bundle.js';
 import { App, Views, View, Toolbar, Link } from 'framework7-react';
 import cordovaApp from '../js/cordova-app';
 import routes from '../js/routes';
-
-// Probably store it in a better place
-const OS_APP_ID = '30753b80-fc81-4dc2-9a73-61eecdcec542';
+// Probably moving to environment files is better option
+import { ONE_SIGNAL_API_KEY } from '../js/constants';
 
 export default class extends React.Component {
   constructor() {
@@ -14,7 +13,7 @@ export default class extends React.Component {
     this.state = {
       // Framework7 Parameters
       f7params: {
-        id: 'io.framework7.myapp', // App bundle ID
+        id: 'mobi.monaca.wpsample', // App bundle ID
         name: 'WP App', // App name
         theme: 'auto', // Automatic theme detection
 
@@ -115,7 +114,7 @@ export default class extends React.Component {
     iosSettings['kOSSettingsKeyAutoPrompt'] = false;
     iosSettings['kOSSettingsKeyInAppLaunchURL'] = false;
 
-    window.plugins.OneSignal.startInit(OS_APP_ID)
+    window.plugins.OneSignal.startInit(ONE_SIGNAL_API_KEY)
       .handleNotificationOpened(notificationOpenedCallback)
       .iOSSettings(iosSettings)
       .inFocusDisplaying(

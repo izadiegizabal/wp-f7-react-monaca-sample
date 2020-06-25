@@ -1,7 +1,7 @@
 import React from 'react';
 import renderHTML from 'react-render-html';
 import { Page, Navbar, List, ListItem } from 'framework7-react';
-import './css/posts.css';
+import '../css/posts.css';
 
 // Extract to configuration file
 const API = 'http://www.monacasamplewp.c1.biz/wp-json/wp/v2/';

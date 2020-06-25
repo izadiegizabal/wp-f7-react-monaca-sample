@@ -23,3 +23,5 @@ node_modules/
 *.sqlite
 
 app/cordova/simulation/
+
+app/src/js/constants.js
