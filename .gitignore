@@ -1,7 +1,6 @@
 # ignore everything in the root except the "wp-content" directory.
 !wp-content/
 
-# ignore everything in the "wp-content" directory, except:
 # "mu-plugins", "plugins", "themes" directory
 wp-content/*
 !wp-content/mu-plugins/
@@ -25,3 +24,4 @@ node_modules/
 app/cordova/simulation/
 
 app/src/js/constants.js
+mediumSample/

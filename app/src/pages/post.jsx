@@ -2,9 +2,10 @@ import React from 'react';
 import { Page, Navbar, Preloader, Block } from 'framework7-react';
 import renderHTML from 'react-render-html';
 import '../css/post.css';
+import { API_BASE_URL } from '../js/constants';
 
 // Extract to configuration file
-const API = 'http://www.monacasamplewp.c1.biz/wp-json/wp/v2/posts/';
+const API = API_BASE_URL + 'posts/';
 
 export default class extends React.Component {
   constructor(props) {

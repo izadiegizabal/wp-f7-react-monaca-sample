@@ -47,9 +47,7 @@ export default class extends React.Component {
   render() {
     return (
       <App params={this.state.f7params}>
-        {/* Views/Tabs container */}
         <Views tabs className="safe-areas">
-          {/* Tabbar for switching views-tabs */}
           <Toolbar tabbar labels bottom>
             <Link
               tabLink="#view-all"
@@ -75,13 +73,8 @@ export default class extends React.Component {
             />
           </Toolbar>
 
-          {/* Your main view/tab, should have "view-main" class. It also has "tabActive" prop */}
           <View id="view-all" main tab tabActive url="/" />
-
-          {/* Catalog View */}
           <View id="view-news" name="news" tab url="/news/" />
-
-          {/* Settings View */}
           <View id="view-reviews" name="reviews" tab url="/reviews/" />
         </Views>
       </App>

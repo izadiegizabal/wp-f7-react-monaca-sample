@@ -2,12 +2,12 @@ import React from 'react';
 import renderHTML from 'react-render-html';
 import { Page, Navbar, List, ListItem } from 'framework7-react';
 import '../css/posts.css';
+import { API_BASE_URL } from '../js/constants';
 
 // Extract to configuration file
-const API = 'http://www.monacasamplewp.c1.biz/wp-json/wp/v2/';
 const ALL_POSTS = 'posts?';
 const PER_PAGE = 'per_page=';
-const BASE_API = API + ALL_POSTS + '&' + PER_PAGE + '20' + '&';
+const BASE_API = API_BASE_URL + ALL_POSTS + '&' + PER_PAGE + '20' + '&';
 const PAGE = 'page=';
 let PAGE_NUM = '1';
 
