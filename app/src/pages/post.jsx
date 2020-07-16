@@ -35,9 +35,6 @@ export default class extends React.Component {
               <Block key="content">
                 {renderHTML(this.state.currentPost.content.rendered)}
               </Block>,
-              // <div className="loading">
-              //   <Preloader key="loading"></Preloader>
-              // </div>,
             ]
           : [
               <div className="loading">

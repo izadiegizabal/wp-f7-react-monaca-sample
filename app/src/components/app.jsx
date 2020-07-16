@@ -3,7 +3,7 @@ import { Device } from 'framework7/framework7-lite.esm.bundle.js';
 import { App, Views, View, Toolbar, Link } from 'framework7-react';
 import cordovaApp from '../js/cordova-app';
 import routes from '../js/routes';
-// Probably moving to environment files is better option
+// Probably moving to environment files is a better option
 import { ONE_SIGNAL_API_KEY } from '../js/constants';
 
 export default class extends React.Component {
