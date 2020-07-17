@@ -1,5 +1,7 @@
 # WP App
 
+Sample app made using Framework7 over React, Cordova and OneSignal to connect to a WordPress blog and receive notifications when a new blog post is published.
+
 ## Framework7 CLI Options
 
 Framework7 app created with following options:
